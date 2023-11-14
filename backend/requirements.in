@@ -1,2 +1,10 @@
-django
+Django
+django-environ
+environ
+psycopg2-binary
+django-ckeditor
+Pillow
 djangorestframework
+PyJWT
+djangorestframework-jwt
+django-cors-headers
