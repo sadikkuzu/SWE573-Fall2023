@@ -24,6 +24,7 @@ class Recipe(models.Model):
 class Ingredient(models.Model):
     name = models.CharField(max_length=125)
     amount = models.CharField(max_length=250, blank=True, null=True)
+    unit = models.CharField(max_length=250, blank=True, null=True)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name="ingredients", blank=True, null=True)
     ## ADD Quantity and Standard measurements later ##
 
