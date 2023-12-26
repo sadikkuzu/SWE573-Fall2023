@@ -4,7 +4,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('mycookbook', '0011_remove_recipe_directions_remove_recipe_ingredients_and_more'),
+        ('masterrecipe', '0011_remove_recipe_directions_remove_recipe_ingredients_and_more'),
     ]
 
     operations = [
