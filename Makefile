@@ -28,7 +28,7 @@ else
 endif
 
 compose-up: env-files
-	docker-compose up -d --build
+	docker compose up -d --build
 
 compose-down: env-files
-	docker-compose down --remove-orphans
+	docker compose down --remove-orphans
