@@ -5,7 +5,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('mycookbook', '0009_ingredient_amount'),
+        ('masterrecipe', '0009_ingredient_amount'),
     ]
 
     operations = [
@@ -20,11 +20,11 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='recipe',
             name='Directions',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='recipe', to='mycookbook.direction'),
+            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='recipe', to='masterrecipe.direction'),
         ),
         migrations.AddField(
             model_name='recipe',
             name='ingredients',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='recipe', to='mycookbook.ingredient'),
+            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='recipe', to='masterrecipe.ingredient'),
         ),
     ]

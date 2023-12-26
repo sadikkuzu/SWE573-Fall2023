@@ -4,7 +4,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('mycookbook', '0007_recipe_image_delete_image'),
+        ('masterrecipe', '0007_recipe_image_delete_image'),
     ]
 
     operations = [
