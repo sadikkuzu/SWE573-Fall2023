@@ -6,7 +6,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('masterrecipe', '0004_alter_recipe_name_ingredient_direction'),
+        ('mycookbook', '0004_alter_recipe_name_ingredient_direction'),
     ]
 
     operations = [
