@@ -1,0 +1,67 @@
+# Apply to all files without committing:
+#   pre-commit run --all-files
+# Update this file:
+#   pre-commit autoupdate
+
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+    -   id: end-of-file-fixer
+    -   id: trailing-whitespace
+    -   id: check-yaml
+    -   id: debug-statements
+    -   id: check-ast
+    -   id: check-docstring-first
+    -   id: check-merge-conflict
+    -   id: check-toml
+    -   id: name-tests-test
+        args: [--pytest-test-first]
+-   repo: https://github.com/crate-ci/typos
+    rev: v1.16.23
+    hooks:
+      - id: typos
+-   repo: https://github.com/asottile/reorder_python_imports
+    rev: v3.12.0
+    hooks:
+    -   id: reorder-python-imports
+        args: [--py37-plus]
+        exclude: "__init__.py"
+-   repo: https://github.com/asottile/add-trailing-comma
+    rev: v3.1.0
+    hooks:
+    -   id: add-trailing-comma
+        args: [--py36-plus]
+-   repo: https://github.com/psf/black
+    rev: 23.11.0
+    hooks:
+    -   id: black
+        args: [ --config, .black ]
+-   repo: https://github.com/pycqa/flake8
+    rev: 6.1.0
+    hooks:
+    -   id: flake8
+        additional_dependencies:
+          - flake8-bugbear
+          - flake8-django
+-   repo: https://github.com/charliermarsh/ruff-pre-commit
+    rev: v0.1.5
+    hooks:
+    -   id: ruff
+-   repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.7.0
+    hooks:
+    -   id: mypy
+        additional_dependencies: [types-all]
+-   repo: https://github.com/gitleaks/gitleaks
+    rev: v8.18.0
+    hooks:
+      - id: gitleaks
+-   repo: https://github.com/hadolint/hadolint
+    rev: v2.12.1-beta
+    hooks:
+      - id: hadolint-docker
+-   repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.9.0.6
+    hooks:
+    -   id: shellcheck
