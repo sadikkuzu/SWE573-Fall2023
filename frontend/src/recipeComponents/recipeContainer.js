@@ -39,14 +39,14 @@ export const recipeLoader = async( {params} ) => {
             resp => {
                 console.log(resp.data);
                 recipe['nutritions'] = resp.data['nutrition_content'];
-            } 
+            }
         )
         .catch(error => {
             console.log("There was an error while fetching nutritions!", error)
             recipe['nutritions'] = '573 kcal';
         })
     return recipe;
-} 
+}
 
 
 const { DateTime } = require('luxon');
@@ -56,8 +56,8 @@ function RecipeBody(props) {
     function ValidateInput(input) {
         if (input !== ""){
             return true
-        } else { 
-            return false 
+        } else {
+            return false
         }
     }
 
@@ -88,7 +88,7 @@ function RecipeBody(props) {
 
         function handleSubmit(e) {
             ////
-            // Reads form, creates a new Data, Validates form, 
+            // Reads form, creates a new Data, Validates form,
             // then sends a PUT request to update ingredient
             ////
             e.preventDefault();
@@ -124,7 +124,7 @@ function RecipeBody(props) {
                 .catch(error => {console.log("There was an Error!", error)})
             } else {
                 console.log("Form Not valid")
-                props.setAlertVisable(true);
+                props.setAlertVisible(true);
             }
         }
 
@@ -150,7 +150,7 @@ function RecipeBody(props) {
 
         return (
             <>
-            
+
 
             <Modal
                 isOpen={modal}
@@ -159,7 +159,7 @@ function RecipeBody(props) {
             >
                 <ModalHeader toggle={modalToggle}>Are you sure?</ModalHeader>
                 <ModalBody>
-                You're about to delete the ingredient "{ingName}".<br/>Click "I'm sure" to confirm. 
+                You're about to delete the ingredient "{ingName}".<br/>Click "I'm sure" to confirm.
                 </ModalBody>
                 <ModalFooter>
                 <Button color="primary" onClick={handleDelete}>
@@ -173,7 +173,7 @@ function RecipeBody(props) {
 
 
             <hr className='hr-contents' />
-            <div className='ingredient-row'>                
+            <div className='ingredient-row'>
                 <Row>
                     {
                     !isEdit ?
@@ -181,9 +181,9 @@ function RecipeBody(props) {
                     <Col className='content-row'> {ingAmount} </Col>
                     <Col className='content-row'> {ingUnit} </Col>
                     <Col className='content-row'> {ingName} </Col>
-                    {props.user.username === props.owner && 
+                    {props.user.username === props.owner &&
                     <Col xs='2' className='edit-btn'>
-                        <Button size='sm' outline onClick={handleOnClick}> Edit </Button> 
+                        <Button size='sm' outline onClick={handleOnClick}> Edit </Button>
                     </Col>
                     }
                     </>
@@ -199,7 +199,7 @@ function RecipeBody(props) {
                         </Col>
 
                         <Col className='content-row'>
-                            <Input 
+                            <Input
                                 value={ingUnit}
                                 onChange={(e) => handleChange(e, setIngUnit)}
                                 placeholder='Unit'
@@ -207,7 +207,7 @@ function RecipeBody(props) {
                         </Col>
 
                         <Col className='content-row'>
-                            <Input 
+                            <Input
                                 value={ingName}
                                 onChange={(e) => handleChange(e, setIngName)}
                                 placeholder='Ingredient Name'
@@ -217,10 +217,10 @@ function RecipeBody(props) {
                             <Col className='mt-2'>
                                 <Button size='sm' outline color='warning' onClick={handleCancel} className="me-2" > Cancel </Button>
                                 <Button size='sm' outline color='primary' type='submit' className='me-2'> Submit </Button>
-                                <Button size='sm' outline color='danger' onClick={modalToggle} > Delete </Button> 
+                                <Button size='sm' outline color='danger' onClick={modalToggle} > Delete </Button>
                             </Col>
                         </Row>
-                        
+
                     </form>
                     }
                 </Row>
@@ -228,15 +228,15 @@ function RecipeBody(props) {
             </>
         )
     };
-    
+
     function IngredientsContainer(props) {
         const [isAddIng, setIsAddIng] = useState(false);
         const [newIngName, setNewIngName] = useState("");
         const [newIngAmount, setNewIngAmount] = useState("");
         const [newIngUnit, setNewIngUnit] = useState("");
-        const [alertVisable, setAlertVisable] = useState(false);
+        const [alertVisible, setAlertVisible] = useState(false);
 
-        const onDismiss = () => { setAlertVisable(false) }
+        const onDismiss = () => { setAlertVisible(false) }
 
         function handleClick(){
             setIsAddIng(true);
@@ -296,25 +296,25 @@ function RecipeBody(props) {
                 setIsAddIng(false);
             } else {
                 console.log("New form invalid!");
-                setAlertVisable(true);
+                setAlertVisible(true);
             }
-            return 
-            
+            return
+
         }
-        
+
         return(
             <Row className='ingredients-container me-2'>
-                <Alert color="danger" isOpen={alertVisable} toggle={onDismiss}>
+                <Alert color="danger" isOpen={alertVisible} toggle={onDismiss}>
                     Looks like one or more of your fields are blank! Please check again.
                 </Alert>
                 <div className='body-titles' id="ingredients-title">Ingredients:</div>
                 {props.ingredients.map((ingredient) => {
-                    return <IngredientRow ingredient={ingredient} key={ingredient.id} user={props.user} owner={props.owner} setAlertVisable={setAlertVisable} revalidator={props.revalidator} />
+                    return <IngredientRow ingredient={ingredient} key={ingredient.id} user={props.user} owner={props.owner} setAlertVisable={setAlertVisible} revalidator={props.revalidator} />
                 })}
 
                 {props.user.username === props.owner && // validating that the current user is the owner
                 <>
-                { 
+                {
                 !isAddIng ? // opens or closes the form by read isAddIng state
                     <Button outline onClick={handleClick}> Add New Ingredient </Button>
                 :
@@ -337,7 +337,7 @@ function RecipeBody(props) {
                             </Col>
 
                             <Col className='content-row mt-2'>
-                                <Input 
+                                <Input
                                     placeholder='Ingredient Name'
                                     onChange={(e) => handleChange(e, setNewIngName)}
                                 />
@@ -345,7 +345,7 @@ function RecipeBody(props) {
                             <Row>
                                 <Col className='mt-2'>
                                     <Button size='sm' outline color='danger' onClick={handleCancel} className="me-2"> Cancel </Button>
-                                    <Button size='sm' outline color='primary' type='submit'> Submit </Button> 
+                                    <Button size='sm' outline color='primary' type='submit'> Submit </Button>
                                 </Col>
                             </Row>
                     </form>
@@ -363,7 +363,7 @@ function RecipeBody(props) {
         const [ dirContent, setDirContent ] = useState(props.direction['content'])
         const [modal, setModal] = useState(false)
 
-        function modalToggle(){setModal(!modal)} 
+        function modalToggle(){setModal(!modal)}
 
         function handleClick(){
             setIsEdit(!isEdit);
@@ -377,7 +377,7 @@ function RecipeBody(props) {
             setDirContent(props.direction['content']);
             setIsEdit(false);
         }
-        
+
         function handleSubmit(e){
             e.preventDefault();
             console.log("submitting form");
@@ -432,7 +432,7 @@ function RecipeBody(props) {
             >
                 <ModalHeader toggle={modalToggle}>Are you sure?</ModalHeader>
                 <ModalBody>
-                You're about to delete the step "{dirContent}".<br/>Click "I'm sure" to confirm. 
+                You're about to delete the step "{dirContent}".<br/>Click "I'm sure" to confirm.
                 </ModalBody>
                 <ModalFooter>
                 <Button color="primary" onClick={handleDelete}>
@@ -449,9 +449,9 @@ function RecipeBody(props) {
                 !isEdit ?
                     <>
                     <Col className='content-row'>{props.index + 1}.  {dirContent}</Col>
-                    {props.user.username === props.owner && 
-                    <Col xs='2' className='edit-btn'> 
-                        <Button size='sm' outline onClick={handleClick}> Edit </Button> 
+                    {props.user.username === props.owner &&
+                    <Col xs='2' className='edit-btn'>
+                        <Button size='sm' outline onClick={handleClick}> Edit </Button>
                     </Col>
                     }
                     </>
@@ -459,7 +459,7 @@ function RecipeBody(props) {
                     <Col>
                         <form onSubmit={handleSubmit}>
                             <Col className='content-row'>
-                                <Input 
+                                <Input
                                     value={dirContent}
                                     onChange={(e) => handleChange(e)}
                                 />
@@ -469,7 +469,7 @@ function RecipeBody(props) {
                                 <Col className='mt-2'>
                                 <Button size='sm' outline color='warning' onClick={handleCancel} className="me-2" > Cancel </Button>
                                     <Button size='sm' outline color='primary' type='submit' className='me-2'> Submit </Button>
-                                    <Button size='sm' outline color='danger' onClick={modalToggle} > Delete </Button> 
+                                    <Button size='sm' outline color='danger' onClick={modalToggle} > Delete </Button>
                                 </Col>
                             </Row>
                         </form>
@@ -479,13 +479,13 @@ function RecipeBody(props) {
             </>
         )
     }
-    
+
     function DirectionContainer (props) {
         const [newDir, setNewDir] = useState("");
         const [isAddIng, setIsAddIng] = useState(false);
-        const [alertVisable, setAlertVisable] = useState(false);
+        const [alertVisible, setAlertVisible] = useState(false);
 
-        const onDismiss = () => { setAlertVisable(false) }
+        const onDismiss = () => { setAlertVisible(false) }
 
         function handleClick(){
             setIsAddIng(true);
@@ -529,23 +529,23 @@ function RecipeBody(props) {
                 setIsAddIng(false);
             } else {
                 console.log("New form invalid!");
-                setAlertVisable(true);
+                setAlertVisible(true);
             }
-            return 
+            return
         }
 
         return (
             <Row className='directions-container me-2'>
-                <Alert color="danger" isOpen={alertVisable} toggle={onDismiss}>
+                <Alert color="danger" isOpen={alertVisible} toggle={onDismiss}>
                     Looks like one or more of your fields are blank! Please check again.
                 </Alert>
                 <div className='body-titles' id='directions-title'> Steps: </div>
                 {props.directions.map((direction, index) =>{
                     return <DirectionRow direction={direction} index={index} key={index + 1} user={props.user} owner={props.owner} revalidator={props.revalidator} />
                 })}
-                {props.user.username === props.owner && // validating that the current user is the owner 
+                {props.user.username === props.owner && // validating that the current user is the owner
                 <>
-                { 
+                {
                 !isAddIng ?
                     <Button outline onClick={handleClick}> Add New Direction </Button>
                 :
@@ -553,7 +553,7 @@ function RecipeBody(props) {
                     <hr className='hr-contents'/>
                     <form className='mt-2' onSubmit={handleSubmit}>
                             <Col className='content-row'>
-                                <Input 
+                                <Input
                                     placeholder='Direction'
                                     onChange={(e) => handleChange(e, setNewDir)}
                                 />
@@ -562,16 +562,16 @@ function RecipeBody(props) {
                             <Row>
                                 <Col className='mt-3'>
                                     <Button size='sm' outline color='danger' onClick={handleCancel} className="me-2" > Cancel </Button>
-                                    <Button size='sm' outline color='primary' type='submit'> Submit </Button> 
+                                    <Button size='sm' outline color='primary' type='submit'> Submit </Button>
                                 </Col>
                             </Row>
                     </form>
                     </>
                 }
                 </>
-                
+
                 }
-                
+
             </Row>
         )
     }
@@ -608,9 +608,9 @@ function RecipeHeader(props) {
 
     return (
         <>
-        
+
         <div className='recipe-header-wrapper p-3'>
-        
+
             <div className='recipe-header container'>
                 <Row className='d-flex flex-md-row flex-column-reverse'>
                     <Col id="recipeMeta">
@@ -627,7 +627,7 @@ function RecipeHeader(props) {
             </div>
         </div>
         </>
-        
+
     )
 }
 
@@ -647,15 +647,15 @@ export default function RecipeContainer(props){
     <>
     <div className='recipe-background'>
     <NavBar />
-        <RecipeHeader 
-            name={recipe['name']} 
+        <RecipeHeader
+            name={recipe['name']}
             owner={recipe['owner']}
             created_at={recipe['created_at']}
             image={recipe['image']}
-            
+
             />
         <div className="container" name="RecipeContainer">
-            <RecipeBody 
+            <RecipeBody
                 description={recipe['description']}
                 ingredients={recipe['ingredients']}
                 directions={recipe['directions']}
@@ -663,11 +663,10 @@ export default function RecipeContainer(props){
                 owner={recipe['owner']}
                 recipe={recipe['id']}
                 user={user}
-                revalidator={revalidator} 
+                revalidator={revalidator}
                 />
         </div>
     </div>
     </>
     );
 }
-

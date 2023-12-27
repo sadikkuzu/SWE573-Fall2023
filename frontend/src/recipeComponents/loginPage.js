@@ -10,7 +10,7 @@ import AuthContext from "../context/AuthContext";
 
 
 const LoginPage = () => {
-  
+
     const { loginUser } = useContext(AuthContext);
     const [usernameInput, setUsernameInput] = useState("");
     const [passwordInput, setPasswordInput] = useState("");
@@ -34,26 +34,26 @@ const LoginPage = () => {
                         <h1>Login </h1>
                         <hr className="hr-login" />
                         <Label htmlFor="username">Username</Label>
-                        <Input 
-                            className="login-input" 
-                            type="text" id="username" 
-                            value={usernameInput} 
-                            onChange={(e) => handleChange(e, setUsernameInput)} 
+                        <Input
+                            className="login-input"
+                            type="text" id="username"
+                            value={usernameInput}
+                            onChange={(e) => handleChange(e, setUsernameInput)}
                             placeholder="Enter Username" />
                         <br/>
                         <Label htmlFor="password">Password</Label>
-                        <Input 
-                            className="login-input" 
-                            type="password" 
-                            id="password" 
-                            value={passwordInput} 
-                            onChange={(e) => handleChange(e, setPasswordInput)} 
+                        <Input
+                            className="login-input"
+                            type="password"
+                            id="password"
+                            value={passwordInput}
+                            onChange={(e) => handleChange(e, setPasswordInput)}
                             placeholder="Enter Password" />
                         <br />
                         <Button className="form-button" type="submit">Login</Button>
                     </form>
                 </div>
-                    
+
             </div>
         </div>
     );

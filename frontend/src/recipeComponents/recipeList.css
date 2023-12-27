@@ -20,7 +20,7 @@ body ::-webkit-scrollbar {
 
 .checkbox-wrapper {
     color: rgb(255, 103, 0);
-}  
+}
 
 .searchIcon {
     width: 20px;
@@ -60,7 +60,7 @@ body ::-webkit-scrollbar {
     font-weight: 400;
     min-width: auto;
     opacity: .8;
-    
+
 }
 
 .searchTerm:focus {
@@ -106,6 +106,3 @@ body ::-webkit-scrollbar {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
   }
-
-
-

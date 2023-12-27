@@ -35,7 +35,7 @@ function ImageImage(props){
                 {image}
             </div>
         </div>
-        
+
     )
 }
 
@@ -51,15 +51,15 @@ function ImageSection(props){
         let newImageURL = URL.createObjectURL(image);
         setImageURL(newImageURL);
     }, [image]);
-    
+
     function onImageChange(e) {
 
         if (e.target.files[0]){
-           setImage(e.target.files[0]) 
+           setImage(e.target.files[0])
         } else {
             setImage("")
         }
-    } 
+    }
 
     return(
         <FormGroup>
@@ -72,10 +72,10 @@ function ImageSection(props){
 }
 
 function DescriptionSection (props) {
-    
+
     const setDescription = props.setDescription
     const recipeDescription = props.description
-    
+
     function handleChange(e) {
         const is_valid = props.validate (e)
 
@@ -85,8 +85,8 @@ function DescriptionSection (props) {
             'is_invalid': !is_valid
         })
     }
-    
-    
+
+
     return (
         <div>
             <h3> Description Section </h3>
@@ -94,8 +94,8 @@ function DescriptionSection (props) {
             <div className='mt-4'>
             <FormGroup>
                 <Input
-                type='textarea' 
-                id='recipeDescription' 
+                type='textarea'
+                id='recipeDescription'
                 placeholder='Recipe Description'
                 onChange={handleChange}
                 valid={recipeDescription['is_valid']}
@@ -118,14 +118,14 @@ function RecipeName(props){
         setRecipeName({
             'name':e.target.value,
             'is_valid': is_valid,
-            'is_invalid': !is_valid, 
+            'is_invalid': !is_valid,
         });
     }
 
     return (
         <FormGroup>
-            <Input 
-            id="recipeName" 
+            <Input
+            id="recipeName"
             placeholder='Recipe Name'
             onChange={handleChange}
             valid={recipeName['is_valid']}
@@ -137,8 +137,8 @@ function RecipeName(props){
 }
 
 function IngredientRow(props){
-    
-    // For all valid/invalid attributes of the Inputs, 
+
+    // For all valid/invalid attributes of the Inputs,
     // first check if input has been changed before
     // if the input has been changed once then assign the valid or invalid attribute
 
@@ -146,30 +146,30 @@ function IngredientRow(props){
         <FormGroup>
             <Row>
                 <Col className='mt-1' md={3}>
-                    <Input 
+                    <Input
                     name='amount'
-                    placeholder='Amount' 
-                    onChange={props.onChange} 
+                    placeholder='Amount'
+                    onChange={props.onChange}
                     valid={props['validation']['amountHasChanged'] ? props.validation['amount'] : false}
-                    invalid={props['validation']['amountHasChanged'] ? !props.validation['amount']: false} 
+                    invalid={props['validation']['amountHasChanged'] ? !props.validation['amount']: false}
                     />
                 </Col>
                 <Col className='mt-1' md={3}>
-                    <Input 
+                    <Input
                     name='unit'
-                    placeholder='Unit' 
-                    onChange={props.onChange} 
+                    placeholder='Unit'
+                    onChange={props.onChange}
                     valid={props['validation']['unitHasChanged'] ? props.validation['unit'] : false}
-                    invalid={props['validation']['unitHasChanged'] ? !props.validation['unit']: false} 
+                    invalid={props['validation']['unitHasChanged'] ? !props.validation['unit']: false}
                     />
                 </Col>
                 <Col className='mt-1' md={5}>
-                    <Input 
-                    name="name" 
-                    placeholder='Ingredient Name' 
+                    <Input
+                    name="name"
+                    placeholder='Ingredient Name'
                     onChange={props.onChange}
-                    valid={props['validation']['nameHasChanged'] ? props.validation['name'] : false} 
-                    invalid={props['validation']['nameHasChanged'] ? !props.validation['name'] : false} 
+                    valid={props['validation']['nameHasChanged'] ? props.validation['name'] : false}
+                    invalid={props['validation']['nameHasChanged'] ? !props.validation['name'] : false}
                     />
                 </Col>
                 <Col className='mt-1' md={1}>
@@ -182,14 +182,14 @@ function IngredientRow(props){
 
 function IngredientSection(props){
     // lifted the states from RecipeCreateContainer
-    const ingredients = props.ingredients 
+    const ingredients = props.ingredients
     const ingredientAmnt = props.ingredientAmnt
     const setIngredients = props.setIngredients
     const setIngredientAmnt = props.setIngredientAmnt
 
     useEffect(() => {
         let lst = []
-        
+
         for (let i = 0; i < ingredientAmnt; i++){
 
             if (ingredients[i]){
@@ -250,16 +250,16 @@ function IngredientSection(props){
             <hr className='hr-contents' />
             <div className='mt-3'>
                 {ingredients.map((ingredient) => {
-                return <IngredientRow 
-                        onChange={(e) => handleChange(e, ingredient.key)} 
-                        onClick={(e) => handleRemove(e, ingredient.key)} 
+                return <IngredientRow
+                        onChange={(e) => handleChange(e, ingredient.key)}
+                        onClick={(e) => handleRemove(e, ingredient.key)}
                         key={ingredient.key}
                         validation={ingredient['validation']}
                         />
                 })}
             </div>
             <Button name="1" onClick={handleNewIngredient}> Add Ingredient </Button>
-        </div> 
+        </div>
     )
 }
 
@@ -267,7 +267,7 @@ function StepRow(props){
     return(
         <FormGroup>
             <Row>
-                <Col md={1}> 
+                <Col md={1}>
                     <Label for='Step'>
                         {props.order}.
                     </Label>
@@ -280,7 +280,7 @@ function StepRow(props){
                     onChange={props.onChange}
                     valid={props.is_valid}
                     invalid={props.is_invalid}
-                    /> 
+                    />
                 </Col>
                 <Col className='mt-1' md={1}>
                     <Button color="danger" onClick={props.onClick}> Remove </Button>
@@ -304,11 +304,11 @@ function StepSection(props){
                 lst.push(steps[i]);
             } else {
                 lst.push(createStep());
-            };   
+            };
         }
         setSteps(lst);
     }, [stepsAmnt])
-    
+
     function createStep(){
         return ({
             'key': createKey(),
@@ -317,7 +317,7 @@ function StepSection(props){
             'is_invalid': false,
         })
     }
-    
+
     function handleNewStep(){
         setStepAmnt( stepsAmnt + 1 );
     }
@@ -349,20 +349,20 @@ function StepSection(props){
 
             <div className='mt-4'>
                 {steps.map((step, index) => {
-                return <StepRow 
-                        key={step.key} 
-                        order={index + 1} 
+                return <StepRow
+                        key={step.key}
+                        order={index + 1}
                         onClick={(e) => handleStepDelete(e, step.key)}
                         onChange={(e) => handleChange(e, step.key)}
                         is_valid = {step['is_valid']}
-                        is_invalid = {step['is_invalid']} 
+                        is_invalid = {step['is_invalid']}
                         />
                 })}
             </div>
 
             <Button onClick={handleNewStep}> Add Step </Button>
         </div>
-    )   
+    )
 }
 
 
@@ -390,12 +390,12 @@ export default function RecipeCreateContainer(prop){
 
     const {user} = useContext(AuthContext);
     const navigate = useNavigate();
-    
+
     function ValidateInput(e) {
         if (e.target.value !== ""){
             return true
-        } else { 
-            return false 
+        } else {
+            return false
         }
     }
 
@@ -417,8 +417,8 @@ export default function RecipeCreateContainer(prop){
         ingredients.forEach((ingredient )=> { // Validating Ingredients
             if(!ingredient['validation']['name'] || ingredient['name'] === ""){
                 is_valid = false;
-            } 
-            
+            }
+
             if(!ingredient['validation']['amount'] || ingredient['amount'] === ""){
                 is_valid = false;
             }
@@ -427,7 +427,7 @@ export default function RecipeCreateContainer(prop){
         steps.forEach((step) => {
             if(step['is_invalid'] || step['content'] === ""){
                 is_valid = false;
-            } 
+            }
         })
 
         return (is_valid)
@@ -450,7 +450,7 @@ export default function RecipeCreateContainer(prop){
                 formData.append(`ingredients[${index}]name`, JSON.stringify(ingredient.name));
                 formData.append(`ingredients[${index}]amount`, JSON.stringify(ingredient.amount))
             });
-            
+
 
             steps.forEach((step, index) => {
                 formData.append(`steps[${index}]content`, JSON.stringify(step.content));
@@ -465,7 +465,7 @@ export default function RecipeCreateContainer(prop){
                 resp =>{
                     console.log(resp);
                     navigate('/RecipeList');
-                } 
+                }
             )
             .catch(error => {console.log("There was an error!", error)})
         } else {
@@ -484,7 +484,7 @@ export default function RecipeCreateContainer(prop){
             >
                 <ModalHeader toggle={onModalDismiss}>Check Again?</ModalHeader>
                 <ModalBody>
-                Opps, looks like something's wrong with your form. Please check that you've filled everything!
+                Oops, looks like something's wrong with your form. Please check that you've filled everything!
                 </ModalBody>
                 <ModalFooter>
                 <Button color="danger" onClick={onModalDismiss}>
@@ -518,8 +518,8 @@ export default function RecipeCreateContainer(prop){
                         validate={ValidateInput}
                     />
 
-                    <IngredientSection 
-                        ingredients={ingredients} 
+                    <IngredientSection
+                        ingredients={ingredients}
                         setIngredients={setIngredients}
                         ingredientAmnt={ingredientAmnt}
                         setIngredientAmnt={setIngredientAmnt}
@@ -535,7 +535,7 @@ export default function RecipeCreateContainer(prop){
                     <hr></hr>
                     <Button color="primary" type="submit" value="Submit"> Submit</Button>
                 </form>
-            </div> 
+            </div>
         </div>
     )
 }

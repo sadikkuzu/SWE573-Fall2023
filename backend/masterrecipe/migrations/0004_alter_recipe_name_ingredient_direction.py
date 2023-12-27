@@ -1,9 +1,9 @@
-from django.db import migrations, models
 import django.db.models.deletion
+from django.db import migrations
+from django.db import models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('masterrecipe', '0003_recipe_image'),
     ]
