@@ -32,7 +32,7 @@ services:
     ports:
       - 5432:5432
     env_file:
-      - ./backend/core/.env
+      - ./hack/postgres/.env
     volumes:
       - ./postgres-data:/var/lib/postgresql/data
     healthcheck:

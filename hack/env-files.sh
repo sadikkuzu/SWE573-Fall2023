@@ -27,3 +27,4 @@ check_and_create_file() {
 check_and_create_file "./.env"
 check_and_create_file "./backend/core/.env"
 check_and_create_file "./frontend/.env"
+check_and_create_file "./hack/postgres/.env"
