@@ -53,8 +53,8 @@ export default function NavBar(props){
                                 Recipe List
                             </NavLink>
                         </NavItem>
-                        
-                        
+
+
                         {user ? (
                             <>
                                 <NavItem>
@@ -62,7 +62,7 @@ export default function NavBar(props){
                                         Logout
                                     </NavLink>
                                 </NavItem>
-                            </> 
+                            </>
                             ) : (
                                 <>
                                 <NavItem>
@@ -78,7 +78,7 @@ export default function NavBar(props){
                                 </>
                             )
                         }
-                        
+
                     </Nav>
                 </Collapse>
             </Navbar>

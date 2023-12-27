@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 
-//Style & Componenets
+//Style & Components
 import { Input, Label, Button } from "reactstrap";
 import NavBar from "./navbar";
 
@@ -65,9 +65,9 @@ function RegisterPage() {
                     <Button type="submit">Register</Button>
                 </form>
             </div>
-            
+
         </div>
-        
+
     </div>
   );
 }

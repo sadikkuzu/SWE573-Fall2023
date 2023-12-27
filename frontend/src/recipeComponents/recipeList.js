@@ -30,7 +30,7 @@ export const listLoader = async () => {
     const results = await axios.get(`${backendHost}:${backendPort}/${backendEndpoint}/`)
     .catch((error) =>{
         console.log('Error', error.message);
-    }); 
+    });
     const recipes = results.data;
     return recipes;
 }
@@ -40,7 +40,7 @@ function SearchBarContainer (props) {
 
     return (
         <>
-        
+
         <form>
             <div className="search-wrapper mb-3 mt-3">
                 <div className="search">
@@ -52,20 +52,20 @@ function SearchBarContainer (props) {
             </div>
         </form>
         {
-         props.user && 
+         props.user &&
             <div className="checkbox-wrapper d-flex justify-content-center">
             <FormGroup switch>
-                <Input 
-                    type="switch" 
+                <Input
+                    type="switch"
                     role="switch"
                     checked={props.isChecked}
                     onChange={()=>{props.setIsChecked(!props.isChecked)}}
                 />
                 <Label check>View only My Recipes</Label>
             </FormGroup>
-            </div>  
+            </div>
         }
-        
+
         </>
     )
 }
@@ -103,7 +103,7 @@ function RecipeCard(props){
                 </CardText>
             </CardBody>
         </Card>
-        
+
         </>
     )
 }
@@ -127,7 +127,7 @@ function CardsContainer (props){
                 return null
             }))
         }
-        
+
     }
 
 
@@ -157,7 +157,7 @@ export default function RecipeListContainer () {
     useEffect(() => {
         setRecipes(recipeList);
     }, []);
-    
+
     useEffect(() => {
         if (isChecked){
             const backendHost = process.env.REACT_APP_MASTERRECIPE_BACKEND_HOST || 'http://localhost';

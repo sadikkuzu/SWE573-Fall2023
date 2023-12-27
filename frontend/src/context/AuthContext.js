@@ -11,7 +11,7 @@ const AuthContext = createContext();
 export default AuthContext;
 
 export const AuthProvider = ({children}) => {
-    
+
     const [ authTokens, setAuthTokens ] = useState(() => //authToken state
         localStorage.getItem("authTokens")
             ? JSON.parse(localStorage.getItem("authTokens"))
@@ -26,7 +26,7 @@ export const AuthProvider = ({children}) => {
 
     const [ loading, setLoading ] = useState(true);
 
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
 
     const loginUser = async (username, password) => {
         const backendHost = process.env.REACT_APP_MASTERRECIPE_BACKEND_HOST || 'http://localhost';
@@ -53,7 +53,7 @@ export const AuthProvider = ({children}) => {
             alert("Something went wrong");
         }
     };
-    
+
 
     const registerUser = async(username, password, password2) => {
         const backendHost = process.env.REACT_APP_MASTERRECIPE_BACKEND_HOST || 'http://localhost';

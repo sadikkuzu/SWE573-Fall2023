@@ -1,12 +1,12 @@
-from django.conf import settings
-from django.db import migrations, models
 import django.db.models.deletion
+from django.conf import settings
+from django.db import migrations
+from django.db import models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('mycookbook', '0004_alter_recipe_name_ingredient_direction'),
+        ('masterrecipe', '0004_alter_recipe_name_ingredient_direction'),
     ]
 
     operations = [

@@ -1,10 +1,10 @@
-from django.db import migrations, models
+from django.db import migrations
+from django.db import models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('mycookbook', '0007_recipe_image_delete_image'),
+        ('masterrecipe', '0007_recipe_image_delete_image'),
     ]
 
     operations = [

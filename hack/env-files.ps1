@@ -26,3 +26,4 @@ function Check-And-CreateEnv {
 Check-And-CreateEnv -filePath "./.env"
 Check-And-CreateEnv -filePath "./backend/core/.env"
 Check-And-CreateEnv -filePath "./frontend/.env"
+Check-And-CreateEnv -filePath "./hack/postgres/.env"
