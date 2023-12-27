@@ -87,7 +87,7 @@ function DescriptionSection (props) {
     
     return (
         <div>
-            <h3> Description Section </h3>
+            <h3>Description</h3>
             <hr className='hr-contents' />
             <div className='mt-4'>
             <FormGroup>
@@ -206,6 +206,7 @@ function IngredientSection(props){
                 'key':createKey(),
                 'name':"",
                 'amount':"",
+                'unit':"",
                 'validation': {
                     'name': false, //Is name Valid
                     'nameHasChanged':false, //Has the name been changed
@@ -415,9 +416,13 @@ export default function RecipeCreateContainer(prop){
         ingredients.forEach((ingredient )=> { // Validating Ingredients
             if(!ingredient['validation']['name'] || ingredient['name'] === ""){
                 is_valid = false;
-            } 
+            }
             
             if(!ingredient['validation']['amount'] || ingredient['amount'] === ""){
+                is_valid = false;
+            }
+            
+            if(!ingredient['validation']['unit'] || ingredient['unit'] === ""){
                 is_valid = false;
             }
         });
@@ -446,7 +451,8 @@ export default function RecipeCreateContainer(prop){
 
             ingredients.forEach((ingredient, index) => {
                 formData.append(`ingredients[${index}]name`, JSON.stringify(ingredient.name));
-                formData.append(`ingredients[${index}]amount`, JSON.stringify(ingredient.amount))
+                formData.append(`ingredients[${index}]amount`, JSON.stringify(ingredient.amount));
+                formData.append(`ingredients[${index}]unit`, JSON.stringify(ingredient.unit))
             });
             
 

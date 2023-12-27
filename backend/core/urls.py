@@ -8,7 +8,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api/", include("masterrecipe.urls")),
+    path("", include("masterrecipe.urls")),
 ]
 
 if settings.DEBUG:
