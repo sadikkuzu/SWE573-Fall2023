@@ -30,7 +30,7 @@ services:
     container_name: masterrecipe-db
     hostname: db
     ports:
-      - 5432:5432
+      - "${MASTERRECIPE_DATABASE_PORT:-5432}:${MASTERRECIPE_DATABASE_PORT:-5432}"
     env_file:
       - ./hack/postgres/.env
     volumes:
