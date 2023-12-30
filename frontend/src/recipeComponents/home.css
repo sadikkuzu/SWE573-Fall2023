@@ -83,8 +83,16 @@ html,body
     cursor: pointer;
 }
 
+.gallery-card-title span {
+    background-color: rgba(37, 37, 37, 0.5);
+}
+
 .gallery-card:hover {
     transform: scale(1.05);
+}
+
+.gallery-card-text span {
+    background-color: rgba(37, 37, 37, 0.5);
 }
 
 
