@@ -19,7 +19,7 @@ body ::-webkit-scrollbar {
 }
 
 .checkbox-wrapper {
-    color: rgb(255, 103, 0);
+    color: rgb(225, 225, 225);
 }
 
 .searchIcon {
@@ -76,14 +76,16 @@ body ::-webkit-scrollbar {
 .card-image {
     height: 300px;
     object-fit: cover;
+    /* align-self: start; */
 }
 
 .recipe-card {
     color: #004e98;
-    background-image: linear-gradient(to bottom,rgb(255, 103, 0),rgb(255, 103,0));
+    background-image: linear-gradient(to bottom,rgb(225, 225, 225),rgb(255, 255, 255));
     border: none;
     cursor: pointer;
     transition: all .15s ease-in-out;
+    /* align-self: start; */
 }
 
 .recipe-card:hover {
@@ -105,4 +107,4 @@ body ::-webkit-scrollbar {
 .cards-container {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
-  }
+}
