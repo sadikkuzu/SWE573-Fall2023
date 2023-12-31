@@ -37,4 +37,4 @@ jobs:
             sleep 15
             docker compose logs db
             docker compose logs backend
-            docker compose exec -T backend ./hack/test-coverage.sh
+            docker compose exec -T backend ./test-coverage.sh
