@@ -35,4 +35,5 @@ jobs:
             docker compose ps
             docker network ls
             docker compose logs backend
+            sleep 10
             docker compose exec -T backend python manage.py test
