@@ -25,6 +25,8 @@ services:
       - "${MASTERRECIPE_FRONTEND_PORT:-3000}:${MASTERRECIPE_FRONTEND_PORT:-3000}"
     env_file:
       - ./frontend/.env
+    depends_on:
+      - backend
   db:
     image: postgres:15.3-alpine
     container_name: masterrecipe-db
