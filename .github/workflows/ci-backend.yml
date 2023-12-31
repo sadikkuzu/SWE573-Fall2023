@@ -1,0 +1,38 @@
+name: Backend test pipeline
+on:
+  pull_request:
+    paths:
+      - 'backend/**'
+      - 'docker-compose.yml'
+      - '.github/workflows/ci-backend.yml'
+  push:
+    branches:
+      - main
+      - dev
+    paths:
+      - 'backend/**'
+      - 'docker-compose.yml'
+      - '.github/workflows/ci-backend.yml'
+  workflow_dispatch:
+jobs:
+    backend-test:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v4
+        - name: "[CI] Backend test"
+          run: |
+            echo
+            npm install deers > /dev/null 2>&1
+            node -e "const deers = require('deers'); console.log(deers()[new Date().getMinutes()]);" || true
+            python -m pip install -qU pip
+            pip install -q squiral
+            squiral 5
+            make
+            docker --version
+            docker-compose --version
+            make env-files
+            docker compose up -d --build --quiet-pull --remove-orphans
+            docker compose ps
+            docker network ls
+            docker compose logs backend
+            docker compose exec -T backend ./hack/test-coverage-backend.sh
