@@ -34,6 +34,7 @@ jobs:
             docker compose up -d --build --quiet-pull --remove-orphans
             docker compose ps
             docker network ls
+            sleep 15
+            docker compose logs db
             docker compose logs backend
-            sleep 10
             docker compose exec -T backend python manage.py test
