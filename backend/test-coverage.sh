@@ -2,7 +2,7 @@
 
 set -euxo pipefail
 
-pip install -qr requirements-dev.txt
+pip install coverage
 coverage erase
 coverage run manage.py test
 coverage report
