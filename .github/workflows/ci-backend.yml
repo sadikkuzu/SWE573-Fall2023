@@ -35,4 +35,4 @@ jobs:
             docker compose ps
             docker network ls
             docker compose logs backend
-            docker compose exec -T backend ./test-coverage.sh
+            docker compose exec -T backend python manage.py test
