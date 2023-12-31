@@ -14,8 +14,8 @@ ENV PATH="/opt/venv/bin:$PATH"
 COPY requirements.txt requirements.txt
 
 RUN : \
-      && python -m pip install --no-cache-dir --upgrade pip \
-      && pip install --no-cache-dir --requirement requirements.txt \
+      && python -m pip install -q --no-cache-dir --upgrade pip \
+      && pip install -q --no-cache-dir --requirement requirements.txt \
       && :
 
 COPY . .
