@@ -26,8 +26,8 @@ jobs:
             node -e "const deers = require('deers'); console.log(deers()[new Date().getMinutes()]);" || true
             python -m pip install -qU pip
             pip install -q squiral
-            squiral 5
             make
+            squiral 16
             docker --version
             docker-compose --version
             make env-files
@@ -35,4 +35,4 @@ jobs:
             docker compose ps
             docker network ls
             docker compose logs backend
-            docker compose exec -T backend ./hack/test-coverage-backend.sh
+            docker compose exec -T backend ./test-coverage-backend.sh
