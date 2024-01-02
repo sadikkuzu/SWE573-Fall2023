@@ -51,8 +51,7 @@ function SearchBarContainer (props) {
                 </div>
             </div>
         </form>
-        {
-         props.user &&
+        {props.user &&
             <div className="checkbox-wrapper d-flex justify-content-center">
             <FormGroup switch>
                 <Input
@@ -72,7 +71,7 @@ function SearchBarContainer (props) {
 
 function RecipeCard(props){
 
-    const created_at = DateTime.fromISO(props.recipe.created_at).toLocaleString(DateTime.DATETIME_MED);
+    const created_at = DateTime.fromISO(props.recipe.created_at).toLocaleString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) // .toLocaleString(DateTime.DATETIME_MED);
     const navigate = useNavigate();
     const handleOnClick = useCallback(() => navigate(`/Recipe/${props.recipe.id}`, {replace:true}),[navigate]);
 
@@ -80,7 +79,9 @@ function RecipeCard(props){
         <>
         <Card
         style={{
-        width: '18rem'
+        width: '18rem',
+        display: 'flex',
+        flexDirection: 'column',
         }}
         onClick={handleOnClick}
         className='recipe-card m-3'
@@ -91,9 +92,9 @@ function RecipeCard(props){
                     {props.recipe.name}
                 </CardTitle>
                 <CardSubtitle className="mb-2" tag="h6">
-                    &nbsp; {/* By: {props.recipe.owner} */}
+                    &nbsp; by: {props.recipe.owner}
                     <br />
-                    &nbsp; {/* {created_at}  */}
+                    &nbsp; {created_at}
                 </CardSubtitle>
             </CardBody>
             <img className="card-image" alt="Card cap" src={props.recipe.image} width="100%"/>

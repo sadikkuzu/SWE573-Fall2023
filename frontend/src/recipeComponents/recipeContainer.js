@@ -547,22 +547,22 @@ function RecipeBody(props) {
                 <>
                 {
                 !isAddIng ?
-                    <Button outline onClick={handleClick}> Add New Direction </Button>
+                    <Button outline onClick={handleClick}>Add New Step</Button>
                 :
                     <>
                     <hr className='hr-contents'/>
                     <form className='mt-2' onSubmit={handleSubmit}>
                             <Col className='content-row'>
                                 <Input
-                                    placeholder='Direction'
+                                    placeholder='Step'
                                     onChange={(e) => handleChange(e, setNewDir)}
                                 />
                             </Col>
 
                             <Row>
                                 <Col className='mt-3'>
-                                    <Button size='sm' outline color='danger' onClick={handleCancel} className="me-2" > Cancel </Button>
-                                    <Button size='sm' outline color='primary' type='submit'> Submit </Button>
+                                    <Button size='sm' outline color='danger' onClick={handleCancel} className="me-2">Cancel</Button>
+                                    <Button size='sm' outline color='primary' type='submit'>Submit</Button>
                                 </Col>
                             </Row>
                     </form>

@@ -71,10 +71,18 @@ export const AuthProvider = ({children}) => {
                 password2
             })
         });
+        const data = await response.json();
         if (response.status === 201) {
             navigate("/login");
         } else {
-            alert("Please check that all fields are filled and passwords match!")
+            let errorMessage = "";
+            for (const key of Object.keys(data)) {
+                errorMessage += `[${key}]\n`;
+                for (const error of data[key]) {
+                    errorMessage += `${error}\n`;
+                }
+            }
+            alert(errorMessage);
         }
     };
 

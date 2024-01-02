@@ -95,7 +95,7 @@ def api_detail(request, id):
 def api_recents(request):
     if request.method == "GET":
         print("recent GET received")
-        data = Recipe.objects.all()[:3]
+        data = Recipe.objects.order_by('id')[:3]
         print(f"recent data: {data}")
 
         serializer = RecipeSerializer(data, many=True)

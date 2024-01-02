@@ -91,7 +91,7 @@ function GalleryCard(props) {
     const navigate = useNavigate();
     const handleOnClick = useCallback(() => navigate(`/Recipe/${props.recipe.id}`, {replace:true}),[navigate]);
     return (
-        <Col className="card-column"  md="12" xl="4">
+        <Col className="card-column" md="12" xl="4">
             <Card className="gallery-card" onClick={handleOnClick}>
                 <CardImg
                     alt="card image"
@@ -99,12 +99,12 @@ function GalleryCard(props) {
                     className="card-img"
                 />
                 <CardImgOverlay>
-                    <CardTitle>
-                        {props.recipe.name}
+                    <CardTitle className="gallery-card-title">
+                        <span>&nbsp;{props.recipe.name}&nbsp;</span>
                     </CardTitle>
-                    <CardText>
+                    <CardText className="gallery-card-text">
                         <small>
-                            &nbsp; {/* by: {props.recipe.owner} */}
+                            <span>&nbsp;@{props.recipe.owner}&nbsp;</span>
                         </small>
                     </CardText>
                 </CardImgOverlay>

@@ -171,7 +171,7 @@ function IngredientRow(props){
                     />
                 </Col>
                 <Col className='mt-1' md={1}>
-                    <Button color="danger" onClick={props.onClick}> Remove </Button>
+                    <Button color="danger" onClick={props.onClick}>Remove</Button>
                 </Col>
             </Row>
         </FormGroup>
@@ -257,7 +257,7 @@ function IngredientSection(props){
                         />
                 })}
             </div>
-            <Button name="1" onClick={handleNewIngredient}> Add Ingredient </Button>
+            <Button name="1" onClick={handleNewIngredient}>Add Ingredient</Button>
         </div>
     )
 }
@@ -282,7 +282,7 @@ function DirectionRow(props){
                     />
                 </Col>
                 <Col className='mt-1' md={1}>
-                    <Button color="danger" onClick={props.onClick}> Remove </Button>
+                    <Button color="danger" onClick={props.onClick}>Remove</Button>
                 </Col>
             </Row>
         </FormGroup>
@@ -359,7 +359,7 @@ function DirectionSection(props){
                 })}
             </div>
 
-            <Button onClick={handleNewDirection}> Add Direction </Button>
+            <Button onClick={handleNewDirection}>Add Step</Button>
         </div>
     )
 }
@@ -537,7 +537,7 @@ export default function RecipeCreateContainer(prop){
                         validate={ValidateInput}
                     />
                     <hr></hr>
-                    <Button color="primary" type="submit" value="Submit"> Submit</Button>
+                    <Button color="primary" type="submit" value="Submit">Submit</Button>
                 </form>
             </div>
         </div>

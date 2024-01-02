@@ -25,18 +25,20 @@ services:
       - "${MASTERRECIPE_FRONTEND_PORT:-3000}:${MASTERRECIPE_FRONTEND_PORT:-3000}"
     env_file:
       - ./frontend/.env
+    depends_on:
+      - backend
   db:
     image: postgres:15.3-alpine
     container_name: masterrecipe-db
     hostname: db
     ports:
-      - 5432:5432
+      - "${MASTERRECIPE_DATABASE_PORT:-5432}:${MASTERRECIPE_DATABASE_PORT:-5432}"
     env_file:
       - ./hack/postgres/.env
     volumes:
       - ./postgres-data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready"]
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
       interval: 10s
       timeout: 5s
       retries: 5

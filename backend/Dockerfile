@@ -11,11 +11,11 @@ WORKDIR /app
 RUN python -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
 
-COPY requirements.txt requirements.txt
+COPY requirements-dev.txt requirements-dev.txt
 
 RUN : \
-      && python -m pip install --no-cache-dir --upgrade pip \
-      && pip install --no-cache-dir --requirement requirements.txt \
+      && python -m pip install -q --no-cache-dir --upgrade pip \
+      && pip install -q --no-cache-dir --requirement requirements-dev.txt \
       && :
 
 COPY . .
