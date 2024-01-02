@@ -46,7 +46,7 @@ The followings are a list of functional and non-functional requirements that spe
 
 ####  Glossary
 
-- **F:** Functional Requirement 
+- **F:** Functional Requirement
 - **NF:** Non-Functional Requirement
 - **System:** The application built for social recipe sharing
 - **User:** Users registered on the system, with their personal profile page
